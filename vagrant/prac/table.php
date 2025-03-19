@@ -2,6 +2,11 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
+    // ログアウトボタン表示
+    echo "<h3>ログアウト</h3>";
+    echo "<form action='logout.php' method='post'>";
+    echo   "<button type='submit' name='logout' value='send'>ログアウト</button>";
+    echo "</form>";
     /**
      * 課題：ここにechoでHTMLタグを書いてコメント投稿フォームを出力してください
      */
@@ -13,6 +18,12 @@ if (isset($_SESSION['user_id'])) {
     </form>
 TEXT;
     echo $html;
+} else {
+    // ログインボタン表示（ログイン画面に遷移）
+    echo "<h3>ログイン</h3>";
+    echo "<form action='http://localhost:8080/prac/login.php' method='get'>";
+    echo   "<button type='submit'>ログイン</button>";
+    echo "</form>";
 }
 
 // 接続
