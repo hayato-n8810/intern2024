@@ -23,15 +23,21 @@ if ($mysqli->connect_error) {
 /**
  * 課題：trx_commentsにPOSTされたコメントとログインしているユーザのidをINSERTで追加する処理を書いてください
  */
-// サニタイジングした値を格納
-$comment = htmlspecialchars($_POST["comment"], ENT_QUOTES, 'utf8');
 
-// trx_commentsに格納
-$stmt = $mysqli->prepare("INSERT INTO trx_comments (user_id, text) VALUES (?, ?)");
-$stmt->bind_param('ss', $_SESSION['user_id'], $comment);
-$stmt->execute();
+// 正常なアクセスの場合
+if ($_POST["token"] == $_SESSION["token"]) {
+    // サニタイジングした値を格納
+    $comment = htmlspecialchars($_POST["comment"], ENT_QUOTES, 'utf8');
 
-$stmt->close();
+    // trx_commentsに格納
+    $stmt = $mysqli->prepare("INSERT INTO trx_comments (user_id, text) VALUES (?, ?)");
+    $stmt->bind_param('ss', $_SESSION['user_id'], $comment);
+    $stmt->execute();
+
+    $stmt->close();
+} else {
+    echo "不正なアクセスです";
+}
 
 // table.phpのurlを作成
 $tableUrl = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/prac/table.php";

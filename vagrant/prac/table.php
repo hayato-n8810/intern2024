@@ -10,14 +10,16 @@ if (isset($_SESSION['user_id'])) {
     /**
      * 課題：ここにechoでHTMLタグを書いてコメント投稿フォームを出力してください
      */
-    $html = <<<TEXT
-    <h2>コメント入力</h2>
-    <form action="comment.php" method="post">
-        コメント: <input type="text" name="comment" /><br />
-        <input type="submit" />
-    </form>
-TEXT;
-    echo $html;
+    // トークンの生成
+    $token = bin2hex(random_bytes(32));
+    $_SESSION["token"] = $token;
+
+    echo "<h2>コメント入力</h2>";
+    echo "<form action='comment.php' method='post'>";
+    echo "<input type='hidden' name='token' value='{$_SESSION["token"]}'>";
+    echo    "コメント: <input type='text' name='comment' /><br />";
+    echo "<input type='submit' />";
+    echo "</form>";
 } else {
     // ログインボタン表示（ログイン画面に遷移）
     echo "<h3>ログイン</h3>";
@@ -40,7 +42,7 @@ if ($mysqli->connect_error) {
  */
 
 // SQLクエリの作成
-$sql = "SELECT comments.id, user_name, text FROM `trx_comments` AS `comments` INNER JOIN `trx_users` AS `users` ON `users`.`id` = `comments`.`user_id`";
+$sql = "SELECT comments.id, user_name, text FROM `trx_comments` AS `comments` LEFT JOIN `trx_users` AS `users` ON `users`.`id` = `comments`.`user_id`";
 $stmt = $mysqli->prepare($sql);
 
 // クエリの実行
