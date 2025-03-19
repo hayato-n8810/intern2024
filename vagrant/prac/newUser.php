@@ -41,6 +41,7 @@ $mysqli->close();
 
 <body>
     <h2>ユーザ追加</h2>
+    <h3>以下に必要事項を入力してください</h3>
     <form action="newUser.php" method="post">
         ユーザ: <input type="text" name="username" /><br />
         パスワード: <input type="password" name="password" /><br />
