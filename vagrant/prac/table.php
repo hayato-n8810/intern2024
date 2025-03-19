@@ -6,11 +6,9 @@ if (isset($_SESSION['user_id'])) {
      * 課題：ここにechoでHTMLタグを書いてコメント投稿フォームを出力してください
      */
     $html = <<<TEXT
-    <h2>ユーザ追加</h2>
-    <h3>以下に必要事項を入力してください</h3>
-    <form action="newUser.php" method="post">
-        ユーザ: <input type="text" name="username" /><br />
-        パスワード: <input type="password" name="password" /><br />
+    <h2>コメント入力</h2>
+    <form action="comment.php" method="post">
+        コメント: <input type="text" name="comment" /><br />
         <input type="submit" />
     </form>
 TEXT;
