@@ -11,6 +11,12 @@ if (isset($_POST["logout"])) {
     session_destroy();
     echo "セッションが削除されました";
 }
+
+// table.phpのurlを作成
+$tableUrl = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/prac/table.php";
+//リダイレクト
+header("Location: $tableUrl");
+exit();
 ?>
 
 <!DOCTYPE html>

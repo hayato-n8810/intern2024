@@ -42,6 +42,11 @@ if (isset($_SESSION['user_id'])) {
     echo $_SESSION['user_id'];
     echo $_SESSION['user_name'];
     echo "既にログインしています";
+
+    // table.phpのurlを作成
+    $tableUrl = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/prac/table.php";
+    //リダイレクト
+    header("Location: $tableUrl");
     exit();
 }
 
