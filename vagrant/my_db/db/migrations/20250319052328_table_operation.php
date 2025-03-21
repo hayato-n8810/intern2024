@@ -21,14 +21,15 @@ final class TableOperation extends AbstractMigration
     {
         // trx_usesテーブルを作成 
         $userTable = $this->table('trx_users');
-        $userTable->addColumn('user_name', 'string')
-            ->addColumn('password', 'string')
+        $userTable->addColumn('user_name', 'string', ['null' => false, 'default' => null])
+            ->addColumn('password', 'string', ['null' => false, 'default' => null])
+            ->addIndex(['user_name', 'password'], ['unique' => true])
             ->create();
 
         // trx_commentsテーブルを作成
         $commentTable = $this->table('trx_comments');
         $commentTable->addColumn('user_id', 'integer')
-            ->addColumn('text', 'string')
+            ->addColumn('text', 'string', ['null' => false, 'default' => null])
             ->create();
     }
 }
