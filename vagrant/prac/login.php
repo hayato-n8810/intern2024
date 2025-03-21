@@ -43,10 +43,8 @@ if (isset($_SESSION['user_id'])) {
     echo $_SESSION['user_name'];
     echo "既にログインしています";
 
-    // table.phpのurlを作成
-    $tableUrl = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/prac/table.php";
-    //リダイレクト
-    header("Location: $tableUrl");
+    // table.phpへリダイレクト
+    header("Location: /prac/table");
     exit();
 }
 
@@ -69,6 +67,11 @@ $mysqli->close();
         ユーザ: <input type="text" name="username" /><br />
         パスワード: <input type="password" name="password" /><br />
         <input type="submit" />
+    </form>
+
+    <h3>新規登録</h3>
+    <form action='/prac/register' method='post'>
+        <button type='submit'>サインアップ</button>
     </form>
 </body>
 

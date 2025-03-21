@@ -39,8 +39,5 @@ if ($_POST["token"] == $_SESSION["token"]) {
     echo "不正なアクセスです";
 }
 
-// table.phpのurlを作成
-$tableUrl = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . "/prac/table.php";
-
-//リダイレクト（table.phpにリダイレクトすると自然な流れになると思います）
-header("Location: $tableUrl");
+// table.phpへリダイレクト
+header("Location: /prac/table");
