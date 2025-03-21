@@ -40,4 +40,4 @@ if ($_POST["token"] == $_SESSION["token"]) {
 }
 
 // table.phpへリダイレクト
-header("Location: /prac/table");
+header("Location: ./table");

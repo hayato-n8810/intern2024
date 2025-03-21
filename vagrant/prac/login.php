@@ -44,7 +44,7 @@ if (isset($_SESSION['user_id'])) {
     echo "既にログインしています";
 
     // table.phpへリダイレクト
-    header("Location: /prac/table");
+    header("Location: ./table");
     exit();
 }
 

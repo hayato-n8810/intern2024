@@ -37,7 +37,7 @@ if (!empty($_POST["username"]) and !empty($_POST["password"])) {
     $_POST = array();
 
     // login.phpへリダイレクト
-    header("Location: /prac/login");
+    header("Location: ./login");
 }
 ?>
 
