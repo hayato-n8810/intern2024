@@ -23,7 +23,7 @@ if (isset($_SESSION['user_id'])) {
 } else {
     // ログインボタン表示（ログイン画面に遷移）
     echo "<h3>ログイン</h3>";
-    echo "<form action='http://localhost:8080/prac/login.php' method='get'>";
+    echo "<form action='/prac/login' method='post'>";
     echo   "<button type='submit'>ログイン</button>";
     echo "</form>";
 }
