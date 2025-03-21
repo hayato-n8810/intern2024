@@ -33,5 +33,5 @@ if (array_key_exists($sub_path, $routes)) {
 // ファイルが存在しない場合は404エラー
 http_response_code(404);
 // デフォルトの404エラーページを表示
-//header("Location: /404.html");
+header("Location: /404.html");
 exit;
